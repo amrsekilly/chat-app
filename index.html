@@ -60,9 +60,22 @@
   </form>
 
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
-    // connect to any socket
-    var socket = io();
+    $(function () {
+      // open connection
+      var socket = io();
+      // send message on submission
+      $('form').submit(function (e) {
+        // send the message from the input
+        socket.emit('chat message', $('#m').val());
+        $('#messages').append($('#m').val() + '<br>');
+        // clear the input field
+        $('#m').val('');
+        // disable reload
+        e.preventDefault();
+      });
+    });
   </script>
 
 </body>

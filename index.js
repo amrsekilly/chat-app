@@ -13,6 +13,10 @@ http.listen(3000, () => console.log("listening on *:3000"));
 // listen on any socket connection
 Socket.on('connection', (socket) => {
   console.log("A user is connected");
+  // get messages from the clients
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
   // detect if the client disconnected from the socket
   socket.on('disconnect', () => {
     console.log("user disconnected");
