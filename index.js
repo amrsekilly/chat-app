@@ -4,7 +4,7 @@ var http = require('http').Server(app);
 
 // main route
 app.get('/', function (req, res) {
-  res.send('<h1>Hello world</h1>');
+  res.sendFile(__dirname + '/index.html');
 });
 
 // listen on port 3000 for requests
