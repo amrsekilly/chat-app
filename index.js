@@ -5,14 +5,12 @@ const http = require('http').Server(app);
 const Socket = require("socket.io")(http);
 
 // main route
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+app.get('/',  (req, res) => res.sendFile(__dirname + '/index.html'));
+
+// listen on port 3000 for requests
+http.listen(3000, () => console.log('listening on *:3000'));
 
 // listen on any socket connection
 Socket.on('connection', (socket) => {
   console.log("A user is connected");
 });
-
-// listen on port 3000 for requests
-http.listen(3000, () => console.log('listening on *:3000'));
